@@ -16,13 +16,14 @@
      tipoNo *prim; 
      tipoNo *ult;
      int tam; 
- } tipoCalendario; 
+ } tipoCalendario;
   
   
  void criar_agenda(tipoCalendario *calendario); 
- void adiciona_evento(tipoCalendario *calendario, void *evento); 
+ void agendar_evento(tipoCalendario *calendario, void *evento); 
  void proximo_evento(tipoCalendario *calendario); 
  void finalizar_evento(tipoCalendario *calendario); 
- void quantificar_evento(tipoCalendario *calendario); 
+ int quantificar_evento(tipoCalendario *calendario); 
+ void modificar_evento(tipoCalendario *calendario, void *chavedata, void *chavehora);
   
  #endif
