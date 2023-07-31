@@ -51,14 +51,16 @@
  } 
   
  void proximo_evento(tipoCalendario *calendario) {
-    if (calendario->prim ) {
-    	printf("---------------------------\n");            printf("Evento encontrado:\n"); 
-        printf("Nome: %s\n", aux->evento.nome); 
+ 	tipoNo *aux = calendario->prim;
+    if (aux) {
+    	printf("Evento encontrado:\n");
+    	printf("---------------------------\n");
+        printf("Nome: %s\n", aux->evento.nome);
         printf("Data: %s\n", aux->evento.data); 
         printf("Horario: %s\n", aux->evento.hora); 
-        printf("---------------------------\n";
+        printf("---------------------------\n");
     } else {
-  	  printf("Agenda Vazia.");
+  	  printf("Agenda Vazia.\n");
         
     }
 }
@@ -68,6 +70,8 @@
  void criar_agenda (tipoCalendario *calendario){ 
      calendario->prim =NULL; 
      calendario->ult = NULL; 
+     calendario->tam = 0;
+
  } 
   
   
@@ -87,6 +91,27 @@ void finalizar_evento(tipoCalendario *calendario) {
     }
 }
 
-int quantificar_agenda(tipoCalendario *calendário){
+int quantificar_evento(tipoCalendario *calendario){
 	return calendario->tam;
+}
+
+
+void modificar_evento(tipoCalendario *calendario, void *chavedata, void *chavehora) {
+    tipoNo *aux = calendario->prim;
+    int encontrado = 0;
+
+    char *chaveStrdata = (char*)chavedata;
+    char *chaveStrhora = (char*)chavehora;	
+	
+    while (aux) {
+        if ((strcmp(aux->evento.data, chaveStrdata) == 0) || (strcmp(aux->evento.hora, chaveStrhora) == 0)) {
+                printf("Digite o nome do evento: "); 
+                scanf(" %[^\n]%*c", aux->evento.nome);
+                printf("Digite a data do evento: ");  	 
+                scanf(" %[^\n]%*c", aux->evento.data);
+                printf("Digite a hora do evento: "); 
+                scanf(" %[^\n]%*c", aux->evento.hora);
+        }
+
+    }
 }
