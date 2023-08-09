@@ -1,117 +1,123 @@
-#include <stdio.h> 
- #include <stdlib.h> 
- #include <string.h> 
- #include "calendario.h" 
-  
-  
- void agendar_evento(tipoCalendario *calendario, void *evento) { 
-     tipoNo *novoEvento = (tipoNo*)malloc(sizeof(tipoNo)); 
-  
-     if (!novoEvento) { 
-         printf("Erro ao alocar memoria para o evento.\n"); 
-         return; 
-     } 
-  
-     tipoEventos *eventoPtr = (tipoEventos*)evento; 
-     novoEvento->evento = *eventoPtr; 
-     calendario->tam++;
-     novoEvento->prox = NULL; 
-  
-     if (!calendario->prim) { 
-         calendario->prim = novoEvento; 
-         calendario->ult = novoEvento; 
-         return; 
-     } 
-  
-     int novoAno, novoMes, novoDia; 
-     int eventoAno, eventoMes, eventoDia; 
-     sscanf(novoEvento->evento.data, "%d/%d/%d", &novoDia, &novoMes, &novoAno); 
-  
-     tipoNo *tmp = NULL; 
-     tipoNo *aux = calendario->prim; 
-     while (aux) { 
-         sscanf(aux->evento.data, "%d/%d/%d", &eventoDia, &eventoMes, &eventoAno); 
-         if (novoAno < eventoAno || 
-             (novoAno == eventoAno && novoMes < eventoMes) || 
-             (novoAno == eventoAno && novoMes == eventoMes && novoDia < eventoDia)) { 
-             if (tmp) { 
-                 tmp->prox = novoEvento; 
-             } else { 
-                 calendario->prim = novoEvento; 
-             } 
-             novoEvento->prox = aux; 
-             return; 
-         } 
-         tmp = aux; 
-         aux = aux->prox; 
-     } 
-  
-     tmp->prox = novoEvento; 
-     calendario->ult = novoEvento; 
- } 
-  
- void proximo_evento(tipoCalendario *calendario) {
-    tipoNo *aux = calendario->prim;
-    if (aux) {
-        printf("Evento encontrado:\n");
-        printf("---------------------------\n");
-        printf("Nome: %s\n", aux->evento.nome);
-        printf("Data: %s\n", aux->evento.data); 
-        printf("Horario: %s\n", aux->evento.hora); 
-        printf("---------------------------\n");
-    } else {
-      printf("Agenda Vazia.\n");
-        
+#include "stdio.h"
+#include "stdlib.h"
+#include "listase.h"
+
+typedef struct elem_se{
+    void* carga_util;
+    struct elem_se* prox;
+} t_elemento_lse;
+
+/**
+ * cria um elemento da LSE
+*/
+t_elemento_lse* criar_elemento_lse(void* carga_util){
+    t_elemento_lse* novo = malloc(sizeof(t_elemento_lse));
+    novo->carga_util = carga_util;
+    novo->prox = NULL;
+
+    printf("Criando: %p %p %p\n", novo, novo->carga_util, novo->prox);
+
+    return novo;
+}
+
+typedef struct lse t_lse;
+struct lse{
+    t_elemento_lse* inicio;
+    t_elemento_lse* fim;
+    int tamanho;
+    // operacoes
+    t_imprimir_lse imprimir;
+    t_comparar_lse comparar;
+
+};
+
+t_lse* criar_lse(t_imprimir_lse imprimir, t_comparar_lse comparar){
+    t_lse *l = malloc(sizeof(t_lse));
+    l->inicio = l->fim = NULL;
+    l->tamanho = 0;
+    l->imprimir = imprimir;
+    l->comparar = comparar;
+    return l;
+}
+
+void inserir_lse(t_lse* lse, void* carga_util){
+    t_elemento_lse* novo = criar_elemento_lse(carga_util);
+
+    if (lse->inicio == NULL){
+        lse->inicio = lse->fim = novo; 
+    }else{
+        novo->prox = lse->inicio;
+        lse->inicio = novo;
     }
-}
- 
-  
-  
- void criar_agenda (tipoCalendario *calendario){ 
-     calendario->prim =NULL; 
-     calendario->ult = NULL; 
-     calendario->tam = 0;
 
- } 
-  
-  
-void finalizar_evento(tipoCalendario *calendario) { 
-    tipoNo *aux = calendario->prim; 
-
-    if (aux) {
-        calendario->tam--;
-        calendario->prim = aux->prox;
-        printf("Evento Removido:\n");
-        printf("%s\n", aux->evento.data);
-        printf("%s\n", aux->evento.hora);
-        printf("%s\n", aux->evento.nome);
-        free(aux);
-    } else {
-        printf("Agenda Vazia\n");
-    }
+    lse->tamanho++;
 }
 
-int quantificar_evento(tipoCalendario *calendario){
-    return calendario->tam;
-}
-
-
-void modificar_evento(tipoCalendario *calendario, void *chavedata, void *chavehora) {
-    tipoNo *aux = calendario->prim;
-    int encontrado = 0;
-
-    char *chaveStrdata = (char*)chavedata;
-    char *chaveStrhora = (char*)chavehora;  
+void inserir_final_lse(t_lse* lse, void* carga_util){
     
-    while (aux) {
-        if ((strcmp(aux->evento.data, chaveStrdata) == 0) || (strcmp(aux->evento.hora, chaveStrhora) == 0)) {
-                printf("Digite o nome do evento: "); 
-                scanf(" %[^\n]%*c", aux->evento.nome);
-                printf("Digite a data do evento: ");     
-                scanf(" %[^\n]%*c", aux->evento.data);
-                printf("Digite a hora do evento: "); 
-                scanf(" %[^\n]%*c", aux->evento.hora);
-        }
+    t_elemento_lse* novo = criar_elemento_lse(carga_util);
 
+    if (lse->inicio == NULL){
+        lse->inicio = lse->fim = novo;
+    }else{
+       lse->fim->prox = novo;
+        lse->fim = novo;
+    }
+    lse->tamanho++;
+
+}
+
+void inserir_couteudo_lse(t_lse* lse, void* carga){
+    t_elemento_lse* cam = cam->inicio;
+    while( (cam) && (lse->comparar(cam->carga_util, carga) < 0)){
+        cam = cam->prox;
+    }
+    if (cam == lse->inicio){
+        inserir_lse(lse, carga);
+    }
+    else if(!cam){
+        inserir_final_lse(lse, carga);
+    }
+    else{
+        t_elemento_lse* novo = criar_elemento_lse(carga)
+        novo->prox = cam->prox;
+        cam->prox = novo;
+    }
+
+}
+
+void* remover_lse(t_lse* lse){
+    void* carga_util = NULL;
+    t_elemento_lse *removivel = lse->inicio;
+    if (lse->inicio != NULL){
+        carga_util = removivel->carga_util;
+        lse->inicio = removivel->prox;
+        free(removivel);
+        lse->tamanho--;
+    }
+    return carga_util;
+}
+
+void* acessar_lse(t_lse* lse, int pos){
+    pos = (pos>lse->tamanho?pos%lse->tamanho:pos);
+    t_elemento_lse *cam = lse->inicio;
+    void* carga_util=NULL;
+
+    if (lse->inicio){
+        int i=1;
+        while(i<pos){
+            cam = cam->prox;
+            i++;
+        }
+        carga_util = cam->carga_util;  
+    }
+    return carga_util;
+}
+
+void imprimir_lse(t_lse *lse){
+    t_elemento_lse *cam = lse->inicio;
+    while(cam){
+        lse->imprimir(cam->carga_util);
+        cam = cam->prox;
     }
 }
