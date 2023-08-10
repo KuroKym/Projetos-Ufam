@@ -68,7 +68,7 @@ void inserir_final_lse(t_lse* lse, void* carga_util){
 }
 
 void inserir_couteudo_lse(t_lse* lse, void* carga){
-    t_elemento_lse* cam = cam->inicio;
+    t_elemento_lse* cam = lse->inicio;
     while( (cam) && (lse->comparar(cam->carga_util, carga) < 0)){
         cam = cam->prox;
     }
@@ -79,7 +79,7 @@ void inserir_couteudo_lse(t_lse* lse, void* carga){
         inserir_final_lse(lse, carga);
     }
     else{
-        t_elemento_lse* novo = criar_elemento_lse(carga)
+        t_elemento_lse* novo = criar_elemento_lse(carga);
         novo->prox = cam->prox;
         cam->prox = novo;
     }
@@ -99,7 +99,7 @@ void* remover_lse(t_lse* lse){
 }
 
 void* acessar_lse(t_lse* lse, int pos){
-    pos = (pos>lse->tamanho?pos%lse->tamanho:pos);
+    pos = (pos>lse->tamanho ? pos%lse->tamanho : pos);
     t_elemento_lse *cam = lse->inicio;
     void* carga_util=NULL;
 
