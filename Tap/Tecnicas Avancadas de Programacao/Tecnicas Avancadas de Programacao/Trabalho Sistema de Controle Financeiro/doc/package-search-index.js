@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"br.ufam.edu.icomp.Trabalho1"}];updateSearchResults();
