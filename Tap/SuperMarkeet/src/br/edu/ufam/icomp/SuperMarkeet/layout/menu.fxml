@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="542.0" prefWidth="836.0" style="-fx-background-color: #4F4F4F;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufam.icomp.SuperMarkeet.layout.SceneController">
+   <children>
+      <Text fill="WHITE" layoutX="610.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Controle de Vendas!">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="542.0" fitWidth="713.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@supermart.jpeg" />
+         </image>
+      </ImageView>
+      <Button fx:id="botaoRelatorio" layoutX="586.0" layoutY="271.0" mnemonicParsing="false" onAction="#relatorio" style="-fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0; -fx-padding: 8 15 15 15; -fx-background-radius: 8; -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),        #9d4024,        #d86e3a,        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c); -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 ); -fx-font-weight: bold; -fx-font-size: 1.1em;" text="Relatório de compras e vendas" textFill="WHITE" />
+      <Button fx:id="botaoControle" layoutX="613.0" layoutY="100.0" mnemonicParsing="false" onAction="#controle" style="-fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0; -fx-padding: 8 15 15 15; -fx-background-radius: 8; -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),        #9d4024,        #d86e3a,        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c); -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 ); -fx-font-weight: bold; -fx-font-size: 1.1em;" text="Controle de estoque" textFill="WHITE" />
+      <Button fx:id="botaovenda" layoutX="617.0" layoutY="190.0" mnemonicParsing="false" onAction="#venda" style="-fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0; -fx-padding: 8 15 15 15; -fx-background-radius: 8; -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),        #9d4024,        #d86e3a,        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c); -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 ); -fx-font-weight: bold; -fx-font-size: 1.1em;" text="Venda de produtos" textFill="WHITE" />
+   </children>
+</AnchorPane>

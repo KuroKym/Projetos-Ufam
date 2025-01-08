@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Trab2</string>
+    <string name="massage">Digite suas credenciais para continuar</string>
+    <string name="Login">Login</string>
+    <string name="Pass">Senha:</string>
+    <string name="check">Salvar informações de login</string>
+    <string name="buttonLogin">Entrar</string>
+    <string name="slogan" />
+    <string name="slogan1">\"The most secure password manager\"\nBob and Alice</string>
+    <string name="settings">Configurações</string>
+    <string name="about">sobre</string>
+    <string name="campoPass" />
+    <string name="campoUser" />
+    <string name="entrarClicado">entrarClicado</string>
+    <string name="textBemVindo">bem vindo</string>
+    <string name="configs">Configurações</string>
+    <string name="sobre">sobre</string>
+    <string name="addnome">Nome</string>
+    <string name="addTitle">Senha</string>
+    <string name="addNotes">Notas</string>
+</resources>

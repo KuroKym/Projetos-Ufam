@@ -1,0 +1,59 @@
+
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "type": "java",
+                "name": "Increment",
+                "request": "launch",
+                "mainClass": "br.edu.ufam.icomp.SuperMarkeet.layout.Increment",
+                "projectName": "SuperMarkeet"
+            },
+            {
+                "type": "java",
+                "name": "teste",
+                "request": "launch",
+                "mainClass": "br.edu.ufam.icomp.SuperMarkeet.teste",
+                "projectName": "SuperMarkeet"
+            },
+            {
+                "type": "java",
+                "name": "VendaDAO",
+                "request": "launch",
+                "mainClass": "br.edu.ufam.icomp.SuperMarkeet.VendaDAO",
+                "projectName": "SuperMarkeet"
+            },
+            {
+                "type": "java",
+                "name": "SuperMarkeetMain",
+                "request": "launch",
+                "mainClass": "br.edu.ufam.icomp.SuperMarkeet.SuperMarkeetMain",
+                "projectName": "SuperMarkeet"
+            },
+            {
+                "type": "java",
+                "name": "Launcher",
+                "request": "launch",
+                "mainClass": "br.edu.ufam.icomp.SuperMarkeet.Launcher",
+                "projectName": "SuperMarkeet"
+            },
+            {
+                "type": "java",
+                "name": "Current File",
+                "request": "launch",
+                "mainClass": "${file}"
+            },
+            {
+                "type": "java",
+                "name": "SuperMarketMain",
+                "request": "launch",
+                "mainClass": "br.edu.ufam.icomp.SuperMarkeet.SuperMarketMain",
+                "projectName": "SuperMarkeet",
+                "vmArgs": "--module-path \"C:/Users/Jhon/Downloads/javafx-sdk-21.0.2/lib\" --add-modules javafx.controls,javafx.fxml"
+            }
+        ]
+    }
+

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.BoxBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="200.0" prefWidth="300.0" style="-fx-background-color: #8ae7f9;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufam.icomp.SuperMarkeet.layout.PagamentoCenaController"> 
+   <children>
+      <ImageView fitHeight="211.0" fitWidth="306.0" layoutX="45.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@_12460f3a-5fa7-4bf1-9f09-a01bc7bf8948.jpeg" />
+         </image>
+         <effect>
+            <BoxBlur height="2.0" width="2.0" />
+         </effect>
+      </ImageView>
+      <VBox layoutX="35.0" layoutY="29.0" spacing="10.0">
+         <children>
+            <Label style="-fx-background-color: grey;" text="Total Pago:" textFill="WHITE" />
+            <TextField fx:id="totalPagoTextField" />
+            <Label style="-fx-background-color: grey;" text="Tipo de Pagamento:" textFill="WHITE" />
+         </children>
+      </VBox>
+      <Button fx:id="okButton" layoutX="229.0" layoutY="88.0" mnemonicParsing="false" onAction="#okButtonPressed" text="OK" />
+      <ChoiceBox fx:id="tipoPagamento" layoutX="35.0" layoutY="121.0" prefWidth="150.0" />
+   </children>
+</AnchorPane>
