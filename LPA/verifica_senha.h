@@ -1,0 +1,1 @@
+int verificaSenha(char* senhaTeste, char* senhaCriptografada);
